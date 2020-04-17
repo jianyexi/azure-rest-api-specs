@@ -108,15 +108,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "An object containing the annotation definition created by this PUT call.",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Annotation"
-              }
-            }
-          },
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
