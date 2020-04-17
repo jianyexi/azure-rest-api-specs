@@ -134,7 +134,7 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}/Annotations/{annotationId}": {
       "delete": {
         "description": "Delete an Annotation of an Application Insights component.",
-        "operationId": "Annotations_Delete",
+        "operationId": "Annotations_Put",
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
@@ -299,7 +299,6 @@
     "AnnotationIdParameter": {
       "name": "annotationId",
       "in": "path",
-      "required": true,
       "type": "string",
       "description": "The unique annotation ID. This is unique within a Application Insights component.",
       "x-ms-parameter-location": "method"
@@ -307,7 +306,6 @@
     "StartParameter": {
       "name": "start",
       "in": "query",
-      "required": true,
       "type": "string",
       "description": "The start time to query from for annotations, cannot be older than 90 days from current date.",
       "x-ms-parameter-location": "method"
@@ -315,7 +313,6 @@
     "EndParameter": {
       "name": "end",
       "in": "query",
-      "required": true,
       "type": "string",
       "description": "The end time to query for annotations.",
       "x-ms-parameter-location": "method"
