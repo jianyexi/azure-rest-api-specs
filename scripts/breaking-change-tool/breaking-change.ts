@@ -140,12 +140,14 @@ export async function runScript() {
    * always compare against master
    * we need to compare with master branch  
    */
-  if (pr && pr.targetBranch !== "master" && targetBranch != "master" ) {
+  if (pr && pr.targetBranch !== "master") {
     (pr.targetBranch as any) = "master" // always compare to master branch
-    // utils.pullBranch("master","origin")
-     targetBranch = "master"
+     utils.pullBranch("master","origin")
   }
 
+  if (targetBranch !== "master") {
+     targetBranch = "master"
+  }
 
   let newSwaggers: unknown[] = [];
   if (swaggersToProcess.length > 0 && pr !== undefined) {
