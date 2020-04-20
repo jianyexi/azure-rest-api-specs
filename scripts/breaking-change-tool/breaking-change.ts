@@ -115,8 +115,12 @@ export async function runScript() {
     }
   }
 
+  var defaultConfig = cli.defaultConfig()
+  if (defaultConfig.env.SYSTEM_PULLREQUEST_TARGETBRANCH !== "master") {
+     defaultConfig.env.SYSTEM_PULLREQUEST_TARGETBRANCH = "master"
+  }
   // create Azure DevOps PR properties.
-  const pr = await devOps.createPullRequestProperties(cli.defaultConfig())
+  const pr = await devOps.createPullRequestProperties(defaultConfig)
 
   // See whether script is in Travis CI context
   console.log(`isRunningInTravisCI: ${isRunningInTravisCI}`);
@@ -136,9 +140,10 @@ export async function runScript() {
    * always compare against master
    * we need to compare with master branch  
    */
-  if (pr && pr.targetBranch !== "master") {
+  if (pr && pr.targetBranch !== "master" && targetBranch != "master" ) {
     (pr.targetBranch as any) = "master" // always compare to master branch
-     utils.pullBranch("master","origin")
+    // utils.pullBranch("master","origin")
+     targetBranch = "master"
   }
 
 
