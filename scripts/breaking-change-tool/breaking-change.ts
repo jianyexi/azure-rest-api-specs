@@ -115,6 +115,13 @@ export async function runScript() {
     }
   }
 
+  /*
+  var defaultConfig = cli.defaultConfig()
+  if (defaultConfig.env.SYSTEM_PULLREQUEST_TARGETBRANCH !== "master") {
+     defaultConfig.env.SYSTEM_PULLREQUEST_TARGETBRANCH = "master"
+  }
+  */
+
   // create Azure DevOps PR properties.
   const pr = await devOps.createPullRequestProperties(cli.defaultConfig())
 
@@ -123,11 +130,6 @@ export async function runScript() {
 
   console.log(`PR target branch is ${pr ? pr.targetBranch:""}`)
 
-
-  if (pr && pr.targetBranch !== "master") {
-    (pr.targetBranch as any) = "master" // always compare to master branch
-  }
-
   let targetBranch = utils.getTargetBranch();
   let swaggersToProcess = await utils.getFilesChangedInPR(pr);
 
@@ -135,6 +137,20 @@ export async function runScript() {
   console.log(swaggersToProcess);
 
   console.log('Finding new swaggers...')
+
+    /*
+   * always compare against master
+   * we need to compare with master branch  
+   */
+  if (pr && pr.targetBranch !== "master") {
+    (pr.targetBranch as any) = "remotes/origin/master" // always compare to master branch
+     //utils.pullBranch("master","origin")
+  }
+
+  if (targetBranch !== "master") {
+     targetBranch = "master"
+  }
+
   let newSwaggers: unknown[] = [];
   if (swaggersToProcess.length > 0 && pr !== undefined) {
     newSwaggers = await utils.doOnTargetBranch(pr, async () => {
@@ -148,6 +164,7 @@ export async function runScript() {
       await processViaAutoRest(swagger);
     }
   }
+
 
   console.log(`Resolved map for the new specifications:`);
   console.dir(resolvedMapForNewSpecs);
