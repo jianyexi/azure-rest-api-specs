@@ -421,9 +421,9 @@ export const getLinterVersion = ():LintVersion => {
 /**
  * pull a branch
  */
-export const pullBranch = function(name:string , remote: string) {
-  let cmd = `git pull ${remote} ${name}`;
-  console.log(`Pullinga  branch  ${remote} ${name} to current dir...`);
+export const relatedBranch = function(name:string , remote: string) {
+  let cmd = `git branch ${name}  ${remote}`;
+  console.log(`related  branch  ${remote} ${name} to current dir...`);
   console.log(`> ${cmd}`);
   execSync(cmd, { encoding: 'utf8', stdio: 'inherit' });
 }
