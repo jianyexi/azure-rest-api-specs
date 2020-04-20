@@ -115,18 +115,20 @@ export async function runScript() {
     }
   }
 
+  /*
   var defaultConfig = cli.defaultConfig()
   if (defaultConfig.env.SYSTEM_PULLREQUEST_TARGETBRANCH !== "master") {
      defaultConfig.env.SYSTEM_PULLREQUEST_TARGETBRANCH = "master"
   }
+  */
+
   // create Azure DevOps PR properties.
-  const pr = await devOps.createPullRequestProperties(defaultConfig)
+  const pr = await devOps.createPullRequestProperties(cli.defaultConfig())
 
   // See whether script is in Travis CI context
   console.log(`isRunningInTravisCI: ${isRunningInTravisCI}`);
 
   console.log(`PR target branch is ${pr ? pr.targetBranch:""}`)
-
 
   let targetBranch = utils.getTargetBranch();
   let swaggersToProcess = await utils.getFilesChangedInPR(pr);
@@ -141,8 +143,8 @@ export async function runScript() {
    * we need to compare with master branch  
    */
   if (pr && pr.targetBranch !== "master") {
-    (pr.targetBranch as any) = "master" // always compare to master branch
-     utils.pullBranch("master","origin")
+    (pr.targetBranch as any) = "remotes/origin/master" // always compare to master branch
+     //utils.pullBranch("master","origin")
   }
 
   if (targetBranch !== "master") {
