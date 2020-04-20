@@ -120,7 +120,6 @@ export async function runScript() {
   if (defaultConfig.env.SYSTEM_PULLREQUEST_TARGETBRANCH !== "master") {
      utils.relatedBranch("master","remotes/origin/master")
   }
-  
 
   // create Azure DevOps PR properties.
   const pr = await devOps.createPullRequestProperties(cli.defaultConfig())
@@ -142,6 +141,8 @@ export async function runScript() {
    * always compare against master
    * we need to compare with master branch  
    */
+
+  console.log("switch to maser")
   if (pr && pr.targetBranch !== "master") {
     (pr.targetBranch as any) = "master" // always compare to master branch
      //utils.pullBranch("master","origin")
