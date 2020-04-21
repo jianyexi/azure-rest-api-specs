@@ -300,6 +300,7 @@
       "name": "annotationId",
       "in": "path",
       "type": "string",
+      "required": true,
       "description": "The unique annotation ID. This is unique within a Application Insights component.",
       "x-ms-parameter-location": "method"
     },
