@@ -75,7 +75,7 @@ async function runOad(oldSpec: string, newSpec: string) {
   }
 
   // fix up output from OAD, it does not output valid JSON
-  result = result.replace(/}\s+{/gi,"},{")
+  result = result.replace(/}\s+{/gi, "},{")
 
   return JSON.parse(result);
 }
@@ -99,10 +99,10 @@ export async function runScript() {
       throw new Error('swaggerPath is a required parameter of type "string" and it cannot be an empty string.');
     }
 
-  const swaggerOutputFolder = path.join(outputFolder, path.dirname(swaggerPath));
-  const swaggerOutputFileNameWithoutExt = path.basename(swaggerPath, '.json');
-  const autorestPath = path.resolve('node_modules/.bin/autorest')
-  const autoRestCmd = `${autorestPath} --input-file=${swaggerPath} --output-artifact=swagger-document.json --output-file=${swaggerOutputFileNameWithoutExt} --output-folder=${swaggerOutputFolder}`;
+    const swaggerOutputFolder = path.join(outputFolder, path.dirname(swaggerPath));
+    const swaggerOutputFileNameWithoutExt = path.basename(swaggerPath, '.json');
+    const autorestPath = path.resolve('node_modules/.bin/autorest')
+    const autoRestCmd = `${autorestPath} --input-file=${swaggerPath} --output-artifact=swagger-document.json --output-file=${swaggerOutputFileNameWithoutExt} --output-folder=${swaggerOutputFolder}`;
 
     console.log(`Executing : ${autoRestCmd}`);
 
@@ -115,10 +115,12 @@ export async function runScript() {
     }
   }
 
-  
-  var defaultConfig = cli.defaultConfig()
-  if (defaultConfig.env.SYSTEM_PULLREQUEST_TARGETBRANCH !== "master") {
-     utils.relatedBranch("master","remotes/origin/master")
+  /**
+   * prepare for switch to master branch, 
+   * if not the switching to master below would failed
+   */
+  if (cli.defaultConfig().env.SYSTEM_PULLREQUEST_TARGETBRANCH !== "master") {
+    utils.setUpstreamBranch("master", "remotes/origin/master")
   }
 
   // create Azure DevOps PR properties.
@@ -127,7 +129,7 @@ export async function runScript() {
   // See whether script is in Travis CI context
   console.log(`isRunningInTravisCI: ${isRunningInTravisCI}`);
 
-  console.log(`PR target branch is ${pr ? pr.targetBranch:""}`)
+  console.log(`PR target branch is ${pr ? pr.targetBranch : ""}`)
 
   let targetBranch = utils.getTargetBranch();
   let swaggersToProcess = await utils.getFilesChangedInPR(pr);
@@ -137,19 +139,13 @@ export async function runScript() {
 
   console.log('Finding new swaggers...')
 
-    /*
-   * always compare against master
-   * we need to compare with master branch  
-   */
-
-  console.log("switch to maser")
+  /*
+ * always compare against master
+ * we still use the changed file got from the PR, because the master branch may quite different with the PR target branch
+ */
   if (pr && pr.targetBranch !== "master") {
-    (pr.targetBranch as any) = "master" // always compare to master branch
-     //utils.pullBranch("master","origin")
-  }
-
-  if (targetBranch !== "master") {
-     targetBranch = "master"
+    (pr.targetBranch as any) = "master"
+    console.log("switch target branch to master")
   }
 
   let newSwaggers: unknown[] = [];
@@ -182,11 +178,11 @@ export async function runScript() {
       continue;
     }
 
-    const resolved = resolvedMapForNewSpecs[swagger]  
-    if (resolved) { 
+    const resolved = resolvedMapForNewSpecs[swagger]
+    if (resolved) {
       const diffs = await runOad(
         path.resolve(pr!.workingDir, swagger),
-        swagger // Since the swagger resolving  will be done at the oad , here to ensure the position output is consist with the origin swagger,do not use the resolved swagger
+        swagger // Since the swagger resolving  will be done at the oad , here to ensure the position output is consistent with the origin swagger,do not use the resolved swagger
       );
       if (diffs) {
         diffFiles[swagger] = diffs;

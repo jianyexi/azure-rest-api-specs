@@ -419,9 +419,9 @@ export const getLinterVersion = ():LintVersion => {
 }
 
 /**
- * pull a branch
+ * set the Upstream Branch of branch
  */
-export const relatedBranch = function(name:string , remote: string) {
+export const setUpstreamBranch = function (name: string, remote: string) {
   let cmd = `git branch ${name}  ${remote}`;
   console.log(`related  branch  ${remote} ${name} to current dir...`);
   console.log(`> ${cmd}`);
