@@ -185,15 +185,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "The Annotation object for this id.",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Annotation"
-              }
-            }
-          },
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
@@ -300,6 +291,7 @@
     "AnnotationIdParameter": {
       "name": "annotationId",
       "in": "path",
+      "required": true,
       "type": "string",
       "description": "The unique annotation ID. This is unique within a Application Insights component.",
       "x-ms-parameter-location": "method"
