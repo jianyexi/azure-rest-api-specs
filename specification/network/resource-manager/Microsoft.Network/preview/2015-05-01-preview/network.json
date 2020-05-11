@@ -4176,7 +4176,6 @@
           "description": "Gets or sets sku of application gateway resource"
         },
         "operationalState": {
-          "readOnly": true,
           "type": "string",
           "description": "Gets operational state of application gateway resource",
           "enum": [
