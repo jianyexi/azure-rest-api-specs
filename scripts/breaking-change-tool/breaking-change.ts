@@ -7,7 +7,7 @@ import * as utils from './utils'
 import * as path from 'path'
 import * as fs from 'fs-extra'
 import * as os from 'os'
-import * as oad from '@azure/oad'
+import * as oad from '@jianye-org/oad'
 import { devOps, cli } from '@azure/avocado'
 
 const headerText = `
