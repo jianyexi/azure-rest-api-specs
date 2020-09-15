@@ -64,7 +64,7 @@
         "tags": [
           "Redis"
         ],
-        "operationId": "Redis_CheckNameAvailability",
+        "operationId": "Redis_CheckNameAvailability_test",
         "x-ms-examples": {
           "RedisCacheList": {
             "$ref": "./examples/RedisCacheCheckNameAvailability.json"
