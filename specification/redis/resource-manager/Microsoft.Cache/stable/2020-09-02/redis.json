@@ -1646,7 +1646,8 @@
       },
       "required": [
         "properties",
-        "location"
+        "location",
+        "tags"
       ],
       "description": "Parameters supplied to the Create Redis operation."
     },
