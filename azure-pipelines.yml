@@ -1,29 +1,37 @@
-name: "Azure OpenAPI"
+pool:
+  vmImage: "ubuntu-18.04"
 
+name: Merge Validation
 trigger:
-  branches:
-    include:
-      - master
-
+  - master
 pr:
-  autoCancel: false
-
-variables:
-  TRAVIS: 'true'
-  TRAVIS_BRANCH: $(System.PullRequest.TargetBranch)
-  TRAVIS_PULL_REQUEST: $(System.PullRequest.PullRequestNumber)
-  TRAVIS_REPO_SLUG: $(Build.Repository.Name)
-  TRAVIS_PULL_REQUEST_SLUG: $(Build.Repository.Name)
-  TRAVIS_PULL_REQUEST_SHA: $(Build.SourceVersion)
-  PR_ONLY: 'true'
+  - master
 
 jobs:
-- template: .azure-pipelines/BranchProtectionForPrivateRepo.yml
-- template: .azure-pipelines/Syntax.yml
-- template: .azure-pipelines/Semantic.yml
-- template: .azure-pipelines/Avocado.yml
-- template: .azure-pipelines/ModelValidation.yml
-- template: .azure-pipelines/LintDiff.yml
-- template: .azure-pipelines/NetworkValidation.yml
-- template: .azure-pipelines/Spellcheck.yml
-- template: .azure-pipelines/PrettierCheck.yml
+  - job: SecurityTools
+    pool:
+      vmImage: "windows-latest"
+    steps:
+      - task: PoliCheck@1
+        inputs:
+          inputType: "Basic"
+          targetType: "F"
+          targetArgument: "$(Build.SourcesDirectory)"
+          result: "PoliCheck.xml"
+      - task: PostAnalysis@1
+        inputs:
+          AllTools: false
+          APIScan: false
+          BinSkim: false
+          CodesignValidation: false
+          CredScan: false
+          FortifySCA: false
+          FxCop: false
+          ModernCop: false
+          PoliCheck: true
+          PoliCheckBreakOn: "Severity2Above"
+          RoslynAnalyzers: false
+          SDLNativeRules: false
+          Semmle: false
+          TSLint: false
+          ToolLogsNotFoundAction: "Standard"
