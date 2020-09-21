@@ -1,0 +1,21 @@
+pool:
+  vmImage: "ubuntu-18.04"
+
+name: Merge Validation
+trigger:
+  - master
+pr:
+  - master
+
+jobs:
+  - job: SecurityTools
+    pool:
+      vmImage: "windows-latest"
+    steps:
+      - task: PoliCheck@1
+        inputs:
+          inputType: "Basic"
+          targetType: "F"
+          targetArgument: "$(Build.SourcesDirectory)"
+          result: "PoliCheck.xml"
+
