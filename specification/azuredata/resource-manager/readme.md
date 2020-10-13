@@ -26,14 +26,23 @@ These are the global settings for the azuredata.
 
 ``` yaml
 openapi-type: arm
-tag: package-preview-2019-07
+tag: package-2020-10
 ```
 
+
+### Tag: package-2020-10
+
+These settings apply only when `--tag=package-2020-10` is specified on the command line.
+
+```yaml $(tag) == 'package-2020-10'
+input-file:
+  - Microsoft.AzureData/stable/2020-10-13/azuredata.json
+```
 ### Tag: package-preview-2020-09-08
 
 These settings apply only when `--tag=package-preview-2020-09-08` is specified on the command line.
 
-```yaml $(tag) == 'package-preview-2020-09-08'
+``` yaml $(tag) == 'package-preview-2020-09-08'
 input-file:
   - Microsoft.AzureData/preview/2020-09-08-preview/azuredata.json
 ```
@@ -42,10 +51,11 @@ input-file:
 
 These settings apply only when `--tag=package-preview-2019-07` is specified on the command line.
 
-```yaml $(tag) == 'package-preview-2019-07'
+``` yaml $(tag) == 'package-preview-2019-07'
 input-file:
   - Microsoft.AzureData/preview/2019-07-24-preview/azuredata.json
 ```
+
 ### Tag: package-2017-03-01-preview
 
 These settings apply only when `--tag=package-2019-07-24` is specified on the command line.
@@ -102,4 +112,3 @@ See configuration in [readme.csharp.md](./readme.csharp.md)
 ## AzureResourceSchema
 
 See configuration in [readme.azureresourceschema.md](./readme.azureresourceschema.md)
-
