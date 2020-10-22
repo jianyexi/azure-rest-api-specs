@@ -1,0 +1,16 @@
+---
+- Scenario: "SameVersion"
+  description: "this rule is a mapping between oad rules and breaking change rules"
+  rules:
+    - id: "1034"
+      name: "AddedRequiredProperty"
+      severity:
+        original: "info|error" 
+        new: "info"
+      comments: "Add some comments here "
+    - id: "1008"
+      name: "ModifiedOperationId"
+      severity:
+        original: "info|error" 
+        new: "info"
+      comments: "Add some comments here "
