@@ -21,12 +21,12 @@
     - id: "1034"
       name: "AddedRequiredProperty"
       severity:
-        original: "info|error" 
+        original: "info|error|warning" 
         new: "info"
       comments: "Add some comments here "
     - id: "1008"
       name: "ModifiedOperationId"
       severity:
-        original: "info|error" 
+        original: "info|error|warning" 
         new: "info"
       comments: "Add some comments here "
