@@ -1,32 +1,62 @@
 ---
 - Scenario: "SameVersion"
-  description: "this rule is a mapping between oad rules and breaking change rules"
+  description: "A mapping between oad rules and breaking change rules"
   rules:
-    - id: "1034"
-      name: "AddedRequiredProperty"
+    - id: "1039"
+      name: "AddedOperation"
       severity:
-        original: "info|error" 
+        original: "info|warning" 
         new: "error"
-      comments: "Add some comments here "
-    - id: "1008"
-      name: "ModifiedOperationId"
+      comments: "It's not allowed per new breaking change policy"
+      
+    - id: "1038"
+      name: "AddedPath"
       severity:
-        original: "info|error" 
-        new: "info"
-      comments: "Add some comments here "
+        original: "info|warning" 
+        new: "error"
+      comments: "It's not allowed per new breaking change policy"
       
 - Scenario: "CrossVersion"
-  description: "this rule is a mapping between oad rules and breaking change rules"
+  description: "A mapping between oad rules and breaking change rules"
   rules:
-    - id: "1034"
-      name: "AddedRequiredProperty"
+    - id: "1020"
+      name: "AddedEnumValue"
       severity:
         original: "info|error|warning" 
-        new: "info"
-      comments: "Add some comments here "
-    - id: "1008"
-      name: "ModifiedOperationId"
+        new: "warning"
+      comments: "It's allowed in new version."
+      
+    - id: "1025"
+      name: "RequiredStatusChange"
       severity:
         original: "info|error|warning" 
-        new: "info"
-      comments: "Add some comments here "
+        new: "warning"
+      comments: "It's allowed in new version."  
+      
+    - id: "1041"
+      name: "AddedPropertyInResponse"
+      severity:
+        original: "info|error|warning" 
+        new: "warning"
+      comments: "It's allowed in new version."
+      
+    - id: "1029"
+      name: "ReadonlyPropertyChanged"
+      severity:
+        original: "info|error|warning" 
+        new: "warning"
+      comments: "It's allowed in new version."
+      
+    - id: "1021"
+      name: "AddedAdditionalProperties"
+      severity:
+        original: "info|error|warning" 
+        new: "warning"
+      comments: "It's allowed in new version."
+      
+    - id: "1011"
+      name: "AddingResponseCode"
+      severity:
+        original: "info|error|warning" 
+        new: "warning"
+      comments: "It's allowed in new version."
