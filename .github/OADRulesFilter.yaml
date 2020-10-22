@@ -1,18 +1,18 @@
 ---
 - Scenario: "SameVersion"
-  description: "A mapping between oad rules and breaking change rules"
+  description: "A config for filtering oad rules(https://github.com/Azure/openapi-diff/blob/master/docs/rules/1000.md) "
   rules:
-    - id: "1039"
-      name: "AddedOperation"
-      severity:
-        original: "info|warning" 
+    - OadRuleId: "1039"
+      code: "AddedOperation"
+      type:
+        original: "info" 
         new: "error"
       comments: "It's not allowed per new breaking change policy"
       
     - id: "1038"
       name: "AddedPath"
       severity:
-        original: "info|warning" 
+        original: "info" 
         new: "error"
       comments: "It's not allowed per new breaking change policy"
       
@@ -43,20 +43,20 @@
     - id: "1029"
       name: "ReadonlyPropertyChanged"
       severity:
-        original: "info|error|warning" 
+        original: "error" 
         new: "warning"
       comments: "It's allowed in new version."
       
     - id: "1021"
       name: "AddedAdditionalProperties"
       severity:
-        original: "info|error|warning" 
+        original: "error" 
         new: "warning"
       comments: "It's allowed in new version."
       
     - id: "1011"
       name: "AddingResponseCode"
       severity:
-        original: "info|error|warning" 
+        original: "error" 
         new: "warning"
       comments: "It's allowed in new version."
