@@ -1,0 +1,17 @@
+- Scenario: "SameVersion"
+  description: "A config for overriding or enhancing  oad rules "
+  rules:
+    - appliedTo: "1039 | AddedOperation"
+      override:
+        type:
+            if: "info|error" 
+            then: "error"
+            
+            #else: "warning"
+        message: ""
+        code: "Added Operation"
+
+      directive:
+        addingLabels:
+            -  BreakingChangeReviewRequired
+            -  NewApiVersionRequired
