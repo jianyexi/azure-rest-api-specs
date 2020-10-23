@@ -8,7 +8,7 @@
             then: "error"
             
             #else: "warning"
-        message: ""
+        message: "override message"
         code: "Added Operation"
 
       directive:
