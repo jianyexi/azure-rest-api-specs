@@ -37,7 +37,7 @@
     }
   },
   "paths": {
-    "/providers/Microsoft.Devices/operations": {
+    "/providers/Microsoft.Devices/operation": {
       "get": {
         "tags": [
           "Operations"
