@@ -43,6 +43,9 @@
             "schema": {
               "$ref": "#/definitions/CloudError"
             }
+          },
+           "204": {
+            "description": "*** Error Responses: ***\n\n * 400 InvalidParameterValue - An invalid value was given to parameter.\n\n * 400 InvalidCrossSubscriptionVmMove - Invalid cross subscription move of resource.\n\n * 404 ResourceNotFound - The requested resource was not found."
           }
         },
         "x-ms-pageable": {
