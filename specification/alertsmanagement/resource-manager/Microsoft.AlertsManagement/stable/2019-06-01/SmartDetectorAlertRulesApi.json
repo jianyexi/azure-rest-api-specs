@@ -58,12 +58,6 @@
             "schema": {
               "$ref": "#/definitions/SmartDetectorErrorResponse"
             }
-          },
-          "200": {
-            "description": "Successful request to list Smart Detector alert rules.",
-            "schema": {
-              "$ref": "#/definitions/AlertRulesList"
-            }
           }
         },
         "x-ms-pageable": {
