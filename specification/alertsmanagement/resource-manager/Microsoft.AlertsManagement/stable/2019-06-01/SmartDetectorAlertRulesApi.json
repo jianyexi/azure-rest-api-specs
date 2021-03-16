@@ -454,7 +454,7 @@
           ,
           "properties": {
             "x": {
-              "description": "x,
+              "description": "x",
               "readOnly": true,
               "type": "string"
             }
