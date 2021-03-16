@@ -451,6 +451,14 @@
                "minProperties": 1
              }
             ]
+          ,
+          "properties": {
+            "x": {
+              "description": "x,
+              "readOnly": true,
+              "type": "string"
+            }
+          }
         }
       },
       "description": "The alert rule patch information"
