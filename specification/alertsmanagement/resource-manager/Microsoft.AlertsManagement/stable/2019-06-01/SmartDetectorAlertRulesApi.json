@@ -239,7 +239,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AlertRulePatchObject"
+              "$ref": "#/definitions/AlertRulePatch"
             }
           }
         ],
@@ -418,7 +418,7 @@
         }
       }
     },
-    "AlertRulePatchObject": {
+    "AlertRulePatch": {
       "properties": {
         "id": {
           "description": "The resource ID.",
@@ -444,9 +444,13 @@
         },
         "properties": {
           "x-ms-client-flatten": true,
-          "$ref": "#/definitions/AlertRulePatchProperties",
-          "description": "The properties of the alert rule.",
-          "minProperties": 1
+           "allOf" : [
+             {
+              "$ref": "#/definitions/AlertRulePatchProperties"
+               "description": "The properties of the alert rule.",
+               "minProperties": 1
+             }
+            ]
         }
       },
       "description": "The alert rule patch information"
