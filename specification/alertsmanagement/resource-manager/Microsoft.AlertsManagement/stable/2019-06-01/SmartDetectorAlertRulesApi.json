@@ -446,7 +446,7 @@
           "x-ms-client-flatten": true,
            "allOf" : [
              {
-              "$ref": "#/definitions/AlertRulePatchProperties"
+               "$ref": "#/definitions/AlertRulePatchProperties",
                "description": "The properties of the alert rule.",
                "minProperties": 1
              }
