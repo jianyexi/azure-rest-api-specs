@@ -52,7 +52,7 @@ input-file:
 
 These settings apply only when `--tag=package-2020-06-02` is specified on the command line.
 
-``` yaml $(tag) == 'package-2020-06-01'
+``` yaml $(tag) == 'package-2020-06-02'
 input-file:
 - Microsoft.AppConfiguration/stable/2020-06-02/appconfiguration.json
 ```
