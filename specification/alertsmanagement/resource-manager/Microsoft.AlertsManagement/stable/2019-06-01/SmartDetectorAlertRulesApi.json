@@ -47,10 +47,8 @@
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/ExpandDetectorParameter"
           }
+         
         ],
         "responses": {
           "default": {
