@@ -120,7 +120,6 @@ input-file:
   - Microsoft.Network/preview/2021-02-01-preview/network.json
   - Microsoft.Network/stable/2020-08-01/networkInterface.json
   - Microsoft.Network/preview/2021-02-01-preview/networkManager.json
-  - Microsoft.Network/preview/2021-02-01-preview/networkManagerActiveConfiguration.json
   - Microsoft.Network/preview/2021-02-01-preview/networkManagerConnectivityConfiguration.json
   - Microsoft.Network/preview/2021-02-01-preview/networkManagerEffectiveConfiguration.json
   - Microsoft.Network/preview/2021-02-01-preview/networkManagerGroup.json
