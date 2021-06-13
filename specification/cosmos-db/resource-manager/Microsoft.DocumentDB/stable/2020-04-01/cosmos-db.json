@@ -60,9 +60,9 @@
         "responses": {
           "200": {
             "description": "The database account properties were retrieved successfully.",
-            "schema": {
+            "schema": [{
               "$ref": "#/definitions/DatabaseAccountGetResults"
-            }
+            }]
           }
         }
       },
