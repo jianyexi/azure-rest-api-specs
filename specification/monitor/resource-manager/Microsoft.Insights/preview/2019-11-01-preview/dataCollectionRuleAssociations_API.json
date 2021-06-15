@@ -19,48 +19,6 @@
     "application/json"
   ],
   "paths": {
-    "/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations": {
-      "get": {
-        "tags": [
-          "DataCollectionRuleAssociations"
-        ],
-        "summary": "Lists associations for the specified resource.",
-        "operationId": "DataCollectionRuleAssociations_ListByResource",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/parameters/ResourceUriParameter"
-          },
-          {
-            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Request completed successfully",
-            "schema": {
-              "$ref": "#/definitions/DataCollectionRuleAssociationProxyOnlyResourceListResult"
-            }
-          },
-          "default": {
-            "description": "Error",
-            "schema": {
-              "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
-            }
-          }
-        },
-        "x-ms-pageable": {
-          "nextLinkName": "nextLink"
-        },
-        "x-ms-examples": {
-          "List associations for specified resource": {
-            "$ref": "./examples/DataCollectionRuleAssociationsListByResource.json"
-          }
-        }
-      }
-    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}/associations": {
       "get": {
         "tags": [
