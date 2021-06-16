@@ -58,12 +58,6 @@
             "schema": {
               "$ref": "#/definitions/SmartDetectorErrorResponse"
             }
-          },
-          "200": {
-            "description": "Successful request to list Smart Detector alert rules.",
-            "schema": {
-              "$ref": "#/definitions/AlertRulesList"
-            }
           }
         },
         "x-ms-pageable": {
@@ -245,7 +239,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AlertRulePatchObject"
+              "$ref": "#/definitions/AlertRulePatch"
             }
           }
         ],
@@ -424,7 +418,7 @@
         }
       }
     },
-    "AlertRulePatchObject": {
+    "AlertRulePatch": {
       "properties": {
         "id": {
           "description": "The resource ID.",
@@ -450,9 +444,21 @@
         },
         "properties": {
           "x-ms-client-flatten": true,
-          "$ref": "#/definitions/AlertRulePatchProperties",
-          "description": "The properties of the alert rule.",
-          "minProperties": 1
+           "allOf" : [
+             {
+               "$ref": "#/definitions/AlertRulePatchProperties",
+               "description": "The properties of the alert rule.",
+               "minProperties": 1
+             }
+            ]
+          ,
+          "properties": {
+            "x": {
+              "description": "x",
+              "readOnly": true,
+              "type": "string"
+            }
+          }
         }
       },
       "description": "The alert rule patch information"
