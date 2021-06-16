@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "TrafficManagerManagementClient",
-    "version": "2018-08-01"
+    "version": "2018-08-01",
   },
   "host": "management.azure.com",
   "schemes": [
@@ -14,11 +14,16 @@
   "produces": [
     "application/json"
   ],
+  "tags": [
+    {
+      "name": "Profiles"
+    }
+  ],
   "paths": {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}": {
       "patch": {
         "tags": [
-          "Endpoints"
+          "asdfsd"
         ],
         "operationId": "Endpoints_Update",
         "description": "Update a Traffic Manager endpoint.",
@@ -1045,9 +1050,7 @@
     "HeatMapModel": {
       "properties": {
         "properties": {
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/HeatMapProperties",
-          "description": "The properties of the Traffic Manager HeatMap."
+          "$ref": "#/definitions/HeatMapProperties"
         }
       },
       "allOf": [
@@ -1060,8 +1063,6 @@
     "UserMetricsModel": {
       "properties": {
         "properties": {
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/UserMetricsProperties",
           "description": "The properties of the Traffic Manager User Metrics."
         }
       },
